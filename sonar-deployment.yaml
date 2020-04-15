@@ -26,7 +26,7 @@ spec:
         runAsUser: 0
       containers:
         - name: sonar
-          image: sonarqube:7.0
+          image: sonarqube:7.9
           imagePullPolicy: Always
           args:
             - -Dsonar.web.context=/sonar
