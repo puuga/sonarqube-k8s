@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonar-postgres
+  labels:
+    name: sonar-postgres
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      name: sonar-postgres
+  template:
+    metadata:
+      name: sonar-postgres
+      labels:
+        name: sonar-postgres
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 0
+      containers:
+      - image: postgres:9.5.3
+        name: sonar-postgres
+        ports:
+        - name: postgresport
+          containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          value: password
+        - name: POSTGRES_USER
+          value: sonar
+        volumeMounts:
+          - name: data-disk
+            mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: data-disk
+          hostPath:
+            path: '/data/sonarqube-database'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: sonar-postgres
+  name: sonar-postgres
+spec:
+  selector:
+    name: sonar-postgres
+  ports:
+    - port: 5432
