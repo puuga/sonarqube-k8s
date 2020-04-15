@@ -25,10 +25,11 @@ spec:
         fsGroup: 1000 
         runAsUser: 0
       containers:
-        - image: sonarqube:7.0
+        - name: sonar
+          image: sonarqube:7.0
+          imagePullPolicy: Always
           args:
             - -Dsonar.web.context=/sonar
-          name: sonar
           env:
             - name: SONARQUBE_JDBC_USERNAME
               value: sonar
