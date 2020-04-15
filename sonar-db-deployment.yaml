@@ -42,7 +42,7 @@ spec:
       volumes:
         - name: data-disk
           hostPath:
-            path: '/data/sonarqube-database'
+            path: '/vagrant/sonarqube-database'
 ---
 apiVersion: v1
 kind: Service
