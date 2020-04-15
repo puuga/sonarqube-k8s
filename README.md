@@ -10,7 +10,7 @@ Create the sonar-db deployment
  
 Create the sonar deployment
 
-      https://raw.githubusercontent.com/jaganthoutam/sonarqube-k8s/master/sonar-deployment.yaml
+      kubectl apply -f https://raw.githubusercontent.com/jaganthoutam/sonarqube-k8s/master/sonar-deployment.yaml
       
       
 You can access the sonar:
