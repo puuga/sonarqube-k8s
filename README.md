@@ -13,7 +13,8 @@ Create the sonar deployment
       https://raw.githubusercontent.com/jaganthoutam/sonarqube-k8s/master/sonar-deployment.yaml
       
       
-You can access the sonar from 
+You can access the sonar:
+
       http://IPADDOFNODE:30010/sonar/
       user: admin
       pass: admin
