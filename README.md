@@ -1,6 +1,7 @@
 # sonarqube-k8s
 
 Create /data/sonarqube-database for storing the database
+
     mkdir -p /data/sonarqube-database
     
 Create the sonar-db deployment
